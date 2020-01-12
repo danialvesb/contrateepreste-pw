@@ -1,28 +1,25 @@
 <template>
   <div>
-    {{ services }}
+    <Service v-for="service in services" :key="service.id" :service="service" ></Service>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-
+import Service from './Service'
 export default {
-    data() {
-        return {
-            data: '' 
-        }
+    components: {
+        Service
     },
     computed: {
         ...mapGetters({
             services: 'serviceList'
             
-        })
-        
-    }
+        })   
+    },
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
