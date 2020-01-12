@@ -1,10 +1,10 @@
 export default {
     state: {
-        services: []
+        services: [],
     },
-    mutattions: {
-        setServices(state, services) {
-            state.services = services
+    mutations: {
+        setServices(state, data) {
+            state.services = data
         }
 
     },

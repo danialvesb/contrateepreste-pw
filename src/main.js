@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-
+import './plugins/axios'
 import App from './App.vue'
 
-import './plugins/axios'
+
 import router from './router';
-import store from './store/store'
+import store from './store/store';
 
 Vue.config.productionTip = false
 

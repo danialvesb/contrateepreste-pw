@@ -10,13 +10,15 @@ import { mapGetters } from 'vuex'
 export default {
     data() {
         return {
-            
+            data: '' 
         }
     },
     computed: {
         ...mapGetters({
             services: 'serviceList'
+            
         })
+        
     }
 }
 </script>
