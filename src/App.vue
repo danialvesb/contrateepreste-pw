@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <Header></Header>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -7,23 +9,27 @@
   import 'bootstrap/dist/css/bootstrap.css'
   import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-
+  import Header from  './components/Header'
+  
 
 export default {
   name: 'app',
   components: {
+    Header,
   },
 
 }
 </script>
 
-<style>
+<style scope>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  top: 0%;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  
 }
 </style>
