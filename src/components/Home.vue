@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import ServiceList from './service/ServiceList'
+import ServiceList from './services/ServiceList'
 import { mapActions } from 'vuex'
 
 export default {

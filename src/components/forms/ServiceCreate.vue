@@ -19,7 +19,7 @@
       <b-form-group id="input-group-category" label="Categoria:" label-for="input-category">
         <b-form-select
           id="input-category"
-          v-model="form.category"
+          
           :options="foods"
           required>
         </b-form-select>
@@ -38,7 +38,7 @@
 
 
 
-      <b-button variant="primary" @click="onSubmit" class="mr-3">Salvar Serviço</b-button>
+      <b-button variant="primary" @click="onSubmit(form)" class="mr-3">Salvar Serviço</b-button>
       <b-button variant="danger" @click="onReset">Limpar Campos</b-button>
     </b-form>
     <b-card class="mt-3" header="Dados do Formulário">
@@ -48,15 +48,17 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
     data() {
         return {
             show: true,
             form: {
-                title: '',
-                category: '',
-                description: '',
-                files: ''
+                'title': '',
+                'category': 'aa',
+                'description': '',
+                'file': 'ss'
             },
             foods: [
                 { text: 'Selecione Uma', value: null },
@@ -68,18 +70,25 @@ export default {
         }
     },
     methods: {
-
+        ...mapActions(['addService']),
         onReset() {
             this.form.title = '',
             this.form.category = '',
             this.form.description = '',
             this.form.files = ''
         },
-        onSubmit(event) {
-            event.preventDefault()
+        onSubmit(form) {
+          this.addService(form)
+          
         }
+    },
+    computed: {
+      
     }
 }
+
+
+
 </script>
 
 <style scoped>
