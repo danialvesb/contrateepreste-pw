@@ -1,8 +1,7 @@
 <template>
   <div>
     <h1 class="ml-1">Início</h1>
-    <b-button class="primary ml-1" @click="loadDataLocal">Carregar</b-button>
-
+    <p v-show="false">{{ loadData() }}</p>
     <ServiceList class="ml-1"></ServiceList>
 
   </div>
