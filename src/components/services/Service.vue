@@ -14,15 +14,20 @@
         </b-card-text>
 
         <b-button href="#" variant="primary" class="mr-2">Ofertar</b-button>
-        <b-button href="#" variant="warning" class="mr-2">Editar</b-button>
+        <b-button href="#" variant="warning" class="mr-2" @click="modalShow = !modalShow">Editar</b-button>
         <b-button href="#" variant="danger" @click="deleteService">Apagar</b-button>
     </b-card>
+
+    <b-modal v-model="modalShow" id="modal-1" title="Editar Serviço">
+        <ServiceCreate :formProps="service"></ServiceCreate>
+    </b-modal>
+
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
-import { mapGetters } from 'vuex'
+import ServiceCreate from '@/components/forms/ServiceCreate'
  
 export default {
     
@@ -32,13 +37,21 @@ export default {
             required: true
         }
     },
+    data() {
+        return {
+            modalShow: false
+        }
+    },
+    components: {
+        ServiceCreate
+    },
     methods: {
         ...mapActions(['removeService']),
-        ...mapGetters(['serviceList']),
         offer() {
 
         },
         edit() {
+             
 
         },
         deleteService() {

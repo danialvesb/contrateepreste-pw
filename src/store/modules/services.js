@@ -14,6 +14,13 @@ export default {
         removeService(state, id) {
             const record = state.services.findIndex(element => element.id == id)
             state.services.splice(record, 1)
+        },
+        updateService(state, service) {
+            
+            const record = state.services.findIndex(element => element.id == service.id)
+            console.log(JSON.stringify(state.services[record]))
+            // state.services.splice(record, 0, service)
+            console.log(JSON.stringify(state.services[record]))
         }
 
     },
@@ -42,6 +49,9 @@ export default {
         },
         removeService({ commit }, id) {
             commit('removeService', id)
+        },
+        updateService({ commit }, service) {
+            commit('updateService', service)
         }
     }
 

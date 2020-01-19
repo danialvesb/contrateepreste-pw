@@ -19,7 +19,6 @@
       <b-form-group id="input-group-category" label="Categoria:" label-for="input-category">
         <b-form-select
           id="input-category"
-          
           :options="foods"
           required>
         </b-form-select>
@@ -38,7 +37,8 @@
 
 
 
-      <b-button variant="primary" @click="onSubmit(form)" class="mr-3">Salvar Serviço</b-button>
+      <b-button v-if="formProps" variant="primary" @click="onSubmitUpdate(form)" class="mr-3">Atualizar Serviço</b-button>
+      <b-button v-else variant="primary" @click="onSubmit(form)" class="mr-3">Salvar Serviço</b-button>
       <b-button variant="danger" @click="onReset">Limpar Campos</b-button>
     </b-form>
     <b-card class="mt-3" header="Dados do Formulário">
@@ -51,13 +51,18 @@
 import { mapActions } from 'vuex'
 
 export default {
+    props: {
+      formProps: {
+        type: Object
+      }
+    },
     data() {
         return {
             show: true,
             form: {
-                'title': '',
-                'category': 'aa',
-                'description': '',
+                'title': this.formProps ? this.formProps.title : '',
+                'category': this.formProps ? this.formProps.category : '',
+                'description': this.formProps ? this.formProps.description : '',
                 'file': 'ss'
             },
             foods: [
@@ -70,7 +75,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['addService']),
+        ...mapActions(['addService', 'updateService']),
         onReset() {
             this.form.title = '',
             this.form.category = '',
@@ -80,6 +85,17 @@ export default {
         onSubmit(form) {
           this.addService(form)
           
+        },
+        onSubmitUpdate() {
+          this.$http.put(`api/services/${this.formProps.id}`, this.form).then( resp => {
+            const data = resp.data;
+
+            if(data)
+              this.updateService(this.form)
+
+          }).catch( err => {
+            alert(err)
+          })
         }
     },
     computed: {
