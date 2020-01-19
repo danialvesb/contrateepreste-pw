@@ -2,7 +2,9 @@
   <div>
     <h1 class="ml-1">Início</h1>
     <b-button class="primary ml-1" @click="loadDataLocal">Carregar</b-button>
+
     <ServiceList class="ml-1"></ServiceList>
+
   </div>
 </template>
 
@@ -19,8 +21,6 @@ export default {
     loadDataLocal() {
       this.loadData()
     }
-    
-
   }
 }
 </script>

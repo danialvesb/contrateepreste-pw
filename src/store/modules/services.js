@@ -10,6 +10,10 @@ export default {
         },
         addService(state, data) {
             state.services.push(data);
+        },
+        removeService(state, id) {
+            const record = state.services.findIndex(element => element.id == id)
+            state.services.splice(record, 1)
         }
 
     },
@@ -22,8 +26,8 @@ export default {
         addService({ commit }, service) {
             const serviceJson  = JSON.stringify(service)
             
-            console.log(serviceJson)
-            Vue.prototype.$http.post('api/services.json', serviceJson).then( res => {
+            
+            Vue.prototype.$http.post('api/services', serviceJson).then( res => {
                 const data = res.data
 
                 if( data ) {
@@ -35,6 +39,9 @@ export default {
                 alert(err)
             })
 
+        },
+        removeService({ commit }, id) {
+            commit('removeService', id)
         }
     }
 
