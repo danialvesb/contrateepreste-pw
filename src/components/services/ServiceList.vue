@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p v-show="false">{{ loadData() }}</p>
+    <!-- <p v-show="false">{{ loadData() }}</p> -->
     <Service v-for="service in services" :key="service.id" :service="service" ></Service>
   </div>
 </template>
@@ -25,7 +25,11 @@ export default {
       loadDataLocal() {
         this.loadData()
       }
+    },
+    mounted() {
+      this.loadDataLocal()
     }
+
     
 }
 </script>

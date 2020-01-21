@@ -7,8 +7,7 @@
 
         <b-collapse id="nav-collapse" is-nav>
 
-        <b-navbar-nav class="ml-auto">
-
+        <b-navbar-nav class="ml-3">
           <!-- Login -->
           <b-nav-item-dropdown right>
             <template v-slot:button-content>
@@ -17,13 +16,18 @@
               <b-dropdown-item href="/servicos/listar">Listar</b-dropdown-item>
               <b-dropdown-item href="/servicos/cadastrar">Cadastrar</b-dropdown-item>
           </b-nav-item-dropdown>
-    
+
+        </b-navbar-nav>
+
+        <b-navbar-nav class="ml-auto">
             <!-- Pesquisar -->
             <b-nav-form class="mr-3">
             <b-form-input size="sm" class="mr-sm-2" placeholder="Pesquisar"></b-form-input>
             <b-button size="sm" class="my-2 my-sm-0" type="submit">Pesquisar</b-button>
             </b-nav-form>
+        </b-navbar-nav>
 
+        <b-navbar-nav class="ml-auto">
             <!-- Login -->
             <b-nav-item-dropdown right>
             <template v-slot:button-content>
@@ -40,8 +44,10 @@
 </template>
 
 <script>
-export default {
 
+
+export default {
+  
 }
 </script>
 

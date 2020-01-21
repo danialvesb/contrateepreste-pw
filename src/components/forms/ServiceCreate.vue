@@ -33,6 +33,7 @@
           max-rows="6"
           required>
           </b-form-textarea>
+          <b-alert variant="success" show>Success Alert</b-alert>
       </b-form-group>
 
 
@@ -83,6 +84,7 @@ export default {
             this.form.files = ''
         },
         onSubmit(form) {
+          this.onReset()
           this.addService(form)
           
         },
