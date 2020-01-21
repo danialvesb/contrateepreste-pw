@@ -1,11 +1,14 @@
 <template>
   <div>
+    <p v-show="false">{{ loadData() }}</p>
     <Service v-for="service in services" :key="service.id" :service="service" ></Service>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
+
 import Service from './Service'
 export default {
     components: {
@@ -17,6 +20,13 @@ export default {
             
         })   
     },
+    methods: {
+      ...mapActions(['loadData']),
+      loadDataLocal() {
+        this.loadData()
+      }
+    }
+    
 }
 </script>
 
