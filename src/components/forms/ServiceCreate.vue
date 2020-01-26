@@ -20,6 +20,7 @@
         <b-form-select
           id="input-category"
           :options="foods"
+          v-model="form.category"
           required>
         </b-form-select>
       </b-form-group>
@@ -33,7 +34,6 @@
           max-rows="6"
           required>
           </b-form-textarea>
-          <b-alert variant="success" show>Success Alert</b-alert>
       </b-form-group>
 
 
@@ -62,7 +62,7 @@ export default {
             show: true,
             form: {
                 'title': this.formProps ? this.formProps.title : '',
-                'category': this.formProps ? this.formProps.category : '',
+                'category': this.formProps ? this.formProps.category : ' ',
                 'description': this.formProps ? this.formProps.description : '',
                 'file': 'ss'
             },
@@ -80,12 +80,11 @@ export default {
         onReset() {
             this.form.title = '',
             this.form.category = '',
-            this.form.description = '',
-            this.form.files = ''
+            this.form.description = ''
         },
         onSubmit(form) {
-          this.onReset()
           this.addService(form)
+          this.onReset()
           
         },
         onSubmitUpdate() {
@@ -98,7 +97,8 @@ export default {
           }).catch( err => {
             alert(err)
           })
-        }
+        },
+        
     },
     computed: {
       

@@ -3,6 +3,7 @@ import Vue from 'vue'
 export default {
     state: {
         services: [],
+        categories: []
     },
     mutations: {
         setServices(state, data) {
@@ -21,12 +22,21 @@ export default {
             console.log(JSON.stringify(state.services[record]))
             // state.services.splice(record, 0, service)
             console.log(JSON.stringify(state.services[record]))
+        },
+        setCategories(state, categories) {
+            state.categories = categories;
+        },
+        addCategory(state, category) {
+            state.categories.push(category)
         }
 
     },
     getters: {
         serviceList(state) {
             return state.services;
+        },
+        categoriesList(state) {
+            return state.categories
         }
     },
     actions: {
@@ -52,6 +62,28 @@ export default {
         },
         updateService({ commit }, service) {
             commit('updateService', service)
+        },
+        loadCategories({ commit }) {
+            Vue.prototype.$http.get('api/services/categories').then( res => {
+                const data = res.data
+
+                commit('setCategories', data);
+            } ).catch(err => {
+                alert(err)
+            })
+        },
+        addCategory({ commit }, category) {
+            const categoryJson = JSON.stringify(category)
+
+            Vue.prototype.$http.post('api/services/categories', categoryJson).then( res => {
+                const data = res.data
+
+                if(data) {
+                    commit('addCategory',category)
+                }
+            }).catch(err => {
+                alert(err)
+            })
         }
     }
 

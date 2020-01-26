@@ -15,6 +15,7 @@
             </template>
               <b-dropdown-item href="/servicos/listar">Listar</b-dropdown-item>
               <b-dropdown-item href="/servicos/cadastrar">Cadastrar</b-dropdown-item>
+              <b-dropdown-item href="/servicos/categorias">Categorias</b-dropdown-item>
           </b-nav-item-dropdown>
 
         </b-navbar-nav>
