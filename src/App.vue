@@ -9,7 +9,7 @@
   import 'bootstrap/dist/css/bootstrap.css'
   import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-  import Header from  './components/Header'
+  import Header from  './components/template/Header'
   
 
 export default {
@@ -21,15 +21,16 @@ export default {
 }
 </script>
 
-<style scope>
-#app {
-  top: 0%;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background: linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+<style scoped>
 
-  
-}
+  #app{
+    top: 0%;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    
+    background: linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9);
+  }
+
 </style>
