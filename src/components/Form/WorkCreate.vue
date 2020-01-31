@@ -17,12 +17,12 @@
       </b-form-group>
 
       <b-form-group id="input-group-category" label="Categoria:" label-for="input-category">
-        <b-form-select
-          id="input-category"
-          :options="foods"
-          v-model="form.category"
-          required>
-        </b-form-select>
+<!--        <b-form-select-->
+<!--          id="input-category"-->
+<!--          :options="foods"-->
+<!--          v-model="form.category"-->
+<!--          required>-->
+<!--        </b-form-select>-->
       </b-form-group>
 
       <b-form-group id="input-group-description" label="Descrição:" label-for="input-description">
@@ -61,47 +61,46 @@ export default {
         return {
             show: true,
             form: {
-                'title': this.formProps ? this.formProps.title : '',
-                'category': this.formProps ? this.formProps.category : ' ',
-                'description': this.formProps ? this.formProps.description : '',
-                'file': 'ss'
+              'id': this.formProps ? this.formProps.id : '',
+              'title': this.formProps ? this.formProps.title : '',
+              'category': this.formProps ? this.formProps.category : '1',
+              'description': this.formProps ? this.formProps.description : '',
+              'file': 'ss'
             },
-            foods: [
-                { text: 'Selecione Uma', value: null },
-                { text: 'Construção', value: 1 },
-                { text: 'Peças de Carros', value: 2 },
-                { text: 'Outro', value: 3 },
-
-            ],
         }
     },
     methods: {
-        ...mapActions(['addService', 'updateService']),
-        onReset() {
+      ...mapActions(['addWork', 'updateWork', 'loadCategories']),
+      loadCategoriesLocal() {
+        this.loadCategories()
+      },
+
+      onReset() {
             this.form.title = '',
             this.form.category = '',
             this.form.description = ''
         },
-        onSubmit(form) {
-          this.addService(form)
-          this.onReset()
-          
-        },
-        onSubmitUpdate() {
-          this.$http.put(`api/services/${this.formProps.id}`, this.form).then( resp => {
-            const data = resp.data;
+      onSubmit(form) {
+        this.addWork(form)
+        this.onReset()
 
-            if(data)
-              this.updateService(this.form)
+      },
+      onSubmitUpdate() {
+        this.$http.put(`api/services/${this.formProps.id}`, this.form).then( resp => {
+          const data = resp.data;
 
-          }).catch( err => {
-            alert(err)
-          })
-        },
+          if(data)
+
+            this.updateWork(this.form)
+
+        }).catch( err => {
+          alert(err)
+        })
+      },
         
     },
-    computed: {
-      
+    mounted() {
+      this.loadCategoriesLocal();
     }
 }
 
