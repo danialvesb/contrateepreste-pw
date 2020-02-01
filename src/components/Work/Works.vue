@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- <p v-show="false">{{ loadData() }}</p> -->
-    <Service v-for="service in services" :key="service.id" :service="service" ></Service>
+    <Work v-for="work in works" :key="work.id" :work="work" ></Work>
   </div>
 </template>
 
@@ -9,15 +8,14 @@
 import { mapGetters } from 'vuex'
 import { mapActions } from 'vuex'
 
-import Service from './Service'
+import Work from './Work'
 export default {
     components: {
-        Service
+        Work
     },
     computed: {
         ...mapGetters({
-            services: 'serviceList'
-            
+            works: 'worksList'
         })   
     },
     methods: {
