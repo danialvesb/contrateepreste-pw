@@ -7,26 +7,11 @@
 
         <b-collapse id="nav-text-collapse" is-nav>
             <b-navbar-nav>
-                <b-button align="right" @click="showNewCategory">Nova</b-button>
+                <b-button align="right" @click="showModalNew()" ref="btnShowNew">Nova</b-button>
             </b-navbar-nav>
         </b-collapse>
 
         </b-navbar>
-
-<!--        <ModalCategory :operation="">-->
-
-<!--        </ModalCategory>-->
-
-<!--        <b-modal >-->
-<!--            <div class="text-center">-->
-<!--                <b-form-input v-model="categoryName.title" placeholder="Categoria"></b-form-input>-->
-<!--            </div>-->
-
-<!--            <b-button class="mt-3" variant="outline-success" block @click="newCategory(categoryName)">Salvar</b-button>-->
-<!--            <b-button class="mt-2" variant="outline-danger" block @click="toggleModal">Cancelar</b-button>-->
-<!--        </b-modal>-->
-
-
 
         <b-list-group>
 
@@ -36,14 +21,19 @@
                         <b>{{ category.title }}</b>
                     </b-col>
                     <b-col align="right" sm="4">
-                        <b-button @click="showUpdateCategory(category)"> <b-icon icon="gear"></b-icon> </b-button>
-                        <b-button class="ml-2" @click="showDestroyCategory(category)"> <b-icon icon="trash"></b-icon> </b-button>
+                        <b-button @click="showModalUpdate(category)" ref="btnShowUpdate"> <b-icon icon="gear"></b-icon> </b-button>
+                        <b-button class="ml-2" @click="showModalDelete()"  ref="btnShowDelete"> <b-icon icon="trash"></b-icon> </b-button>
                     </b-col>
 
                 </b-row>
 
             </b-list-group-item>
         </b-list-group>
+
+        <CategoryDelete ></CategoryDelete>
+
+        <CategoryUpdate></CategoryUpdate>
+        <CategoryNew></CategoryNew>
 
     </b-container>
 </template>
@@ -52,11 +42,16 @@
 import { mapActions } from 'vuex'
 import { mapGetters } from 'vuex'
 
-import ModalCategory from "../Modal/ModalCategory";
+import CategoryDelete from "../Modal/CategoryDelete";
+import CategoryUpdate from "../Modal/CategoryUpdate";
+import CategoryNew from "../Modal/CategoryNew";
 
 export default {
+    components: {CategoryNew, CategoryUpdate, CategoryDelete},
     comments: {
-        ModalCategory
+        CategoryDelete,
+        CategoryUpdate,
+        CategoryNew,
     },
     data() {
         return {
@@ -74,35 +69,14 @@ export default {
         onReset() {
             this.categoryName.title = ''
         },
-        showNewCategory() {
-            this.$refs['my-modal'].show()
+        showModalDelete() {
+            this.$root.$emit('bv::show::modal', 'modal-delete', '#btnShowDelete')
         },
-        showUpdateCategory() {
-            this.$refs['my-modal'].show()
+        showModalUpdate() {
+            this.$root.$emit('bv::show::modal', 'modal-update', '#btnShowUpdate')
         },
-        showDestroyCategory() {
-
-        },
-        toggleModal() {
-            this.onReset()
-            this.$refs['my-modal'].hide();
-        },
-
-        //Actions Modal
-        newCategory(category) {
-            this.toggleModal("my-modal")
-            this.addCategory(category)
-            this.onReset()
-        },
-        updateCategory(category) {
-            this.toggleModal("my-modal")
-            this.addCategory(category)
-            this.onReset()
-        },
-        destroyCategory(category) {
-            this.toggleModal("my-modal")
-            this.addCategory(category)
-            this.onReset()
+        showModalNew() {
+            this.$root.$emit('bv::show::modal', 'modal-new', '#btnShowNew')
         },
 
 
