@@ -15,7 +15,7 @@ export default {
         },
 
         removeWork(state, id) {
-            const record = state.services.findIndex(element => element.id == id)
+            const record = state.works.findIndex(element => element.id == id)
             state.works.splice(record, 1)
         },
 
@@ -48,7 +48,7 @@ export default {
 
         },
         loadData({ commit }) {
-            Vue.prototype.$http.get('api/services').then( resp => {
+            Vue.prototype.$http.get('api/services/').then( resp => {
                 const data =  resp.data;
 
                 if(data) {
@@ -61,10 +61,26 @@ export default {
             });
         },
         removeWork({ commit }, id) {
-            commit('removeWork', id)
+            Vue.prototype.$http.delete(`api/services/${id}`).then(resp => {
+                const data = resp.data
+
+                if(data) {
+                    commit('removeWork', id)
+                }
+            }).catch(err => {
+                alert(JSON.stringify(err))
+            } )
+
         },
         updateWork({ commit }, work) {
-            commit('updateWork', work)
+            Vue.prototype.$http.put(`api/services/${work.id}`, this.form).then( resp => {
+                const data = resp.data;
+
+                if(data)
+                    commit('updateWork', work)
+            }).catch( err => {
+                alert(err)
+            })
         },
     }
 

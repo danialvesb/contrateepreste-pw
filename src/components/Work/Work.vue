@@ -47,23 +47,8 @@ export default {
     },
     methods: {
         ...mapActions(['removeWork']),
-        offer() {
-
-        },
-        edit() {
-             
-
-        },
         deleteWork() {
-            this.$http.delete(`api/services/${this.work.id}`).then(resp => {
-                const data = resp.data
-
-                if(data) {
-                    this.removeWork(this.work.id)
-                }
-            }).catch(err => {
-                alert(err.data)
-            } )
+            this.removeWork(this.work.id)
         }
     },
     computed: {

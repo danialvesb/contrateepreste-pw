@@ -77,7 +77,7 @@ export default {
 
       onReset() {
             this.form.title = '',
-            this.form.category = '',
+            this.form.category = '1',
             this.form.description = ''
         },
       onSubmit(form) {
@@ -86,16 +86,7 @@ export default {
 
       },
       onSubmitUpdate() {
-        this.$http.put(`api/services/${this.formProps.id}`, this.form).then( resp => {
-          const data = resp.data;
-
-          if(data)
-
-            this.updateWork(this.form)
-
-        }).catch( err => {
-          alert(err)
-        })
+          this.updateWork(this.form)
       },
         
     },
