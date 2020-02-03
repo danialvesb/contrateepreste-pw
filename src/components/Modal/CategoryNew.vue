@@ -3,30 +3,37 @@
     <b-modal id="modal-new" ref="confirm-modal-new" hide-footer>
         <div class="d-block text-center">
             <h3>Nova Categoria</h3>
+            <b-form-input v-model="category.title"></b-form-input>
         </div>
-        <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Sim</b-button>
-        <b-button class="mt-2" variant="outline-warning" block @click="toggleModal">Cancelar</b-button>
+        <b-button class="mt-3" variant="outline-danger" block @click="addCategoryLocal()">Salvar</b-button>
+        <b-button class="mt-2" variant="outline-warning" block @click="hideModal">Cancelar</b-button>
     </b-modal>
 
 </template>
 
 <script>
+    import { mapActions } from 'vuex'
+
     export default {
-        props: {
-            categoryProps: {
-                type: Object,
-                required: true
+        data() {
+            return {
+                category: {
+                    title: ''
+                }
             }
         },
         methods: {
+            ...mapActions(['addCategory']),
+
             hideModal() {
+                this.category.title = ''
                 this.$refs['confirm-modal-new'].hide()
             },
-            toggleModal() {
-                // We pass the ID of the button that we want to return focus to
-                // when the modal has hidden
-                this.$refs['confirm-modal-new'].toggle('#toggle-btn')
-            }
+            addCategoryLocal() {
+                this.addCategory(this.category)
+                this.category.title
+                this.hideModal();
+            },
         }
     }
 </script>

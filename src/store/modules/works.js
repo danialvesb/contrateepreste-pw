@@ -73,7 +73,7 @@ export default {
 
         },
         updateWork({ commit }, work) {
-            Vue.prototype.$http.put(`api/services/${work.id}`, this.form).then( resp => {
+            Vue.prototype.$http.put(`api/services/${work.id}`, work).then( resp => {
                 const data = resp.data;
 
                 if(data)

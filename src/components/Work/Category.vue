@@ -21,8 +21,8 @@
                         <b>{{ category.title }}</b>
                     </b-col>
                     <b-col align="right" sm="4">
-                        <b-button @click="showModalUpdate(category)" ref="btnShowUpdate"> <b-icon icon="gear"></b-icon> </b-button>
-                        <b-button class="ml-2" @click="showModalDelete()"  ref="btnShowDelete"> <b-icon icon="trash"></b-icon> </b-button>
+                        <b-button @click="showModalUpdate(category)" ref="btnShowUpdate"> <b-icon icon="gear"></b-icon> </b-button> <!--edit-->
+                        <b-button class="ml-2" @click="showModalDelete()"  ref="btnShowDelete"> <b-icon icon="trash"></b-icon> </b-button>  <!--delete-->
                     </b-col>
 
                 </b-row>
@@ -30,8 +30,7 @@
             </b-list-group-item>
         </b-list-group>
 
-        <CategoryDelete ></CategoryDelete>
-
+        <CategoryDelete></CategoryDelete>
         <CategoryUpdate></CategoryUpdate>
         <CategoryNew></CategoryNew>
 
@@ -57,22 +56,22 @@ export default {
         return {
             categoryName: {
                 title:'',
-                titleModal: ''
+                categoryUpdate: null
             }
         }
     },
     methods: {
-        ...mapActions(['loadCategories', 'addCategory']),
-        loadCategoriesLocal() {
-        this.loadCategories()
-        },
+        ...mapActions(['loadCategories']),
         onReset() {
             this.categoryName.title = ''
         },
         showModalDelete() {
             this.$root.$emit('bv::show::modal', 'modal-delete', '#btnShowDelete')
         },
-        showModalUpdate() {
+        showModalUpdate(category) {
+            console.log(JSON.stringify(category))
+            // this.$root.$emit('bv::show::modal', 'modal-input-value', category.title)
+            //desafio passar o nome da categoria ao clicar em edita modal.
             this.$root.$emit('bv::show::modal', 'modal-update', '#btnShowUpdate')
         },
         showModalNew() {
@@ -87,7 +86,7 @@ export default {
         })
     },
     mounted() {
-        this.loadCategoriesLocal();
+        this.loadCategories();
     }
 }
 </script>
