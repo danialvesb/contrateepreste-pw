@@ -67,7 +67,7 @@ export default {
             form: {
                 'id': this.formProps ? this.formProps.id : '',
                 'title': this.formProps ? this.formProps.title : '',
-                'category': this.formProps ? this.formProps.category : '1',
+                'category': this.formProps ? { 'item': this.formProps.category  } : '1',
                 'description': this.formProps ? this.formProps.description : '',
                 'file': 'ss'
             },
@@ -82,7 +82,7 @@ export default {
         ...mapActions(['addWork', 'updateWork', 'loadCategories']),
         onReset() {
             this.form.title = '',
-            this.form.category = '1',
+            this.form.category = '0',
             this.form.description = ''
         },
         onSubmit(form) {
