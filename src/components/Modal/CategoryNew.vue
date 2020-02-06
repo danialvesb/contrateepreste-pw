@@ -31,7 +31,6 @@
             },
             addCategoryLocal() {
                 this.addCategory(this.category)
-                this.category.title
                 this.hideModal();
             },
         }

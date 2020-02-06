@@ -21,8 +21,8 @@
                         <b>{{ category.title }}</b>
                     </b-col>
                     <b-col align="right" sm="4">
-                        <b-button @click="showModalUpdate(category)" ref="btnShowUpdate"> <b-icon icon="gear"></b-icon> </b-button> <!--edit-->
-                        <b-button class="ml-2" @click="showModalDelete()"  ref="btnShowDelete"> <b-icon icon="trash"></b-icon> </b-button>  <!--delete-->
+                        <b-button @click="showModalUpdate()" ref="btnShowUpdate"> <b-icon icon="gear"></b-icon> </b-button> <!--edit-->
+                        <b-button class="ml-2" @click="showModalDelete(category)"  ref="btnShowDelete"> <b-icon icon="trash"></b-icon> </b-button>  <!--delete-->
                     </b-col>
 
                 </b-row>
@@ -30,7 +30,6 @@
             </b-list-group-item>
         </b-list-group>
 
-        <CategoryDelete></CategoryDelete>
         <CategoryUpdate></CategoryUpdate>
         <CategoryNew></CategoryNew>
 
@@ -41,43 +40,46 @@
 import { mapActions } from 'vuex'
 import { mapGetters } from 'vuex'
 
-import CategoryDelete from "../Modal/CategoryDelete";
+
 import CategoryUpdate from "../Modal/CategoryUpdate";
 import CategoryNew from "../Modal/CategoryNew";
 
 export default {
-    components: {CategoryNew, CategoryUpdate, CategoryDelete},
-    comments: {
-        CategoryDelete,
-        CategoryUpdate,
-        CategoryNew,
-    },
+    components: {CategoryNew, CategoryUpdate},
     data() {
         return {
             categoryName: {
-                title:'',
-                categoryUpdate: null
+                title: '',
+                categoryUpdate: null,
             }
         }
     },
     methods: {
-        ...mapActions(['loadCategories']),
+        ...mapActions(['loadCategories', 'removeCategory']),
         onReset() {
             this.categoryName.title = ''
         },
-        showModalDelete() {
-            this.$root.$emit('bv::show::modal', 'modal-delete', '#btnShowDelete')
-        },
-        showModalUpdate(category) {
-            console.log(JSON.stringify(category))
-            // this.$root.$emit('bv::show::modal', 'modal-input-value', category.title)
-            //desafio passar o nome da categoria ao clicar em edita modal.
+        showModalUpdate() {
             this.$root.$emit('bv::show::modal', 'modal-update', '#btnShowUpdate')
         },
         showModalNew() {
             this.$root.$emit('bv::show::modal', 'modal-new', '#btnShowNew')
         },
-
+        showModalDelete(category) {
+            this.boxOne = ''
+            this.$bvModal.msgBoxConfirm('Confirma Apagar Categoria?', {
+                okTitle: 'Sim',
+                cancelTitle: 'Cancelar',
+            })
+                .then(value => {
+                    if (value) {
+                        this.removeCategory(category.id)
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
 
     },
     computed: {
@@ -86,8 +88,8 @@ export default {
         })
     },
     mounted() {
-        this.loadCategories();
-    }
+        this.loadCategories()
+    },
 }
 </script>
 

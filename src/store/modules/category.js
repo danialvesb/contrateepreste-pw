@@ -49,16 +49,15 @@ export default {
             })
         },
         addCategory({ commit }, category) {
-            let categoryJson = JSON.stringify(category);
-            console.log(categoryJson)
-            Vue.prototype.$http.post('api/services/categories', categoryJson).then( res => {
-                const data = res.data
+            
+            Vue.prototype.$http.post('api/services/categories', JSON.stringify(category)).then( resp => {
+                const dataResp = resp.data
 
-                if(data) {
-                    commit('addCategory', categoryJson)
-                }
+                if(dataResp)
+                    commit('addCategory', category)
+
             }).catch(err => {
-                alert(err)
+                console.log(err)
             })
         },
         removeCategory({ commit }, id) {
