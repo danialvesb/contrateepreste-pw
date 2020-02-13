@@ -15,7 +15,7 @@
 
         <b-list-group>
 
-            <b-list-group-item class="mt-1" v-for="category in categories" :key="category.id">
+            <b-list-group-item class="mt-1 category-item" v-for="category in categories" :key="category.id">
                 <b-row>
                     <b-col align="center" sm="8">
                         <b>{{ category.title }}</b>
@@ -94,5 +94,11 @@ export default {
 </script>
 
 <style>
+    .category-item {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        border-radius: 10px;
+    }
 
 </style>

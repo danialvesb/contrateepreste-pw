@@ -49,7 +49,7 @@ export default {
             })
         },
         addCategory({ commit }, category) {
-            
+
             Vue.prototype.$http.post('api/services/categories', JSON.stringify(category)).then( resp => {
                 const dataResp = resp.data
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="bv-example-row">
+  <div class="bv-example-row card-item">
     <b-card
         :title= work.title
         tag="article"
@@ -13,13 +13,13 @@
             <hr>
         </b-card-text>
 
-        <b-button href="#" variant="primary" class="mr-2">Ofertar</b-button>
+        <b-button href="#" disabled=""  variant="primary" class="mr-2">Ofertar</b-button>
         <b-button href="#" variant="warning" class="mr-2" @click="modalShow = !modalShow">Editar</b-button>
         <b-button href="#" variant="danger" @click="deleteWork">Apagar</b-button>
     </b-card>
 
     <b-modal v-model="modalShow" id="modal-1" title="Editar Serviço" hide-footer>
-        <WorkCreate :formProps="work"></WorkCreate>
+        <WorkCreate :formProps="work" class="modal-color"></WorkCreate>
     </b-modal>
 
   </div>
@@ -59,7 +59,9 @@ export default {
 </script>
 
 <style scoped>
-    div {
+    .card-item {
         padding: 10px;
     }
+
+
 </style>

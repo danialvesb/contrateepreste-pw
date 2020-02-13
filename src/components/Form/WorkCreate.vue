@@ -1,6 +1,6 @@
 <template>
 <div>
-    <b-form v-if="show">
+    <b-form v-if="show" class="b-form-color">
 
         <b-form-group
             id="input-group-title"
@@ -43,11 +43,8 @@
 
         <b-button v-if="formProps" variant="primary" @click="onSubmitUpdate(form)" class="mr-3">Atualizar Serviço</b-button>
         <b-button v-else variant="primary" @click="onSubmit(form)" class="mr-3">Salvar Serviço</b-button>
-        <b-button variant="danger" @click="onReset">Limpar Campos</b-button>
+        <b-button variant="danger" @click="onReset" class="mr-3 mt-1">Limpar Campos</b-button>
     </b-form>
-    <b-card class="mt-3" header="Dados do Formulário">
-        <pre class="m-0">{{ form }}</pre>
-    </b-card>
 </div>
 </template>
 
@@ -103,7 +100,13 @@ export default {
 </script>
 
 <style scoped>
-    div {
-        margin: 10px;
+    .b-form-color {
+        display: flex;
+        flex-direction: column;
+        color: white;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: rgb(36, 64, 66);
     }
 </style>
