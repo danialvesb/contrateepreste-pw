@@ -7,43 +7,31 @@
 
         <b-collapse id="nav-text-collapse" is-nav>
             <b-navbar-nav>
-                <b-button align="right" @click="showNewCategory">Nova</b-button>
+                <b-button align="right" @click="showModalNew()" ref="btnShowNew">Nova</b-button>
             </b-navbar-nav>
         </b-collapse>
 
         </b-navbar>
 
-<!--        <ModalCategory :operation="">-->
-
-<!--        </ModalCategory>-->
-
-<!--        <b-modal >-->
-<!--            <div class="text-center">-->
-<!--                <b-form-input v-model="categoryName.title" placeholder="Categoria"></b-form-input>-->
-<!--            </div>-->
-
-<!--            <b-button class="mt-3" variant="outline-success" block @click="newCategory(categoryName)">Salvar</b-button>-->
-<!--            <b-button class="mt-2" variant="outline-danger" block @click="toggleModal">Cancelar</b-button>-->
-<!--        </b-modal>-->
-
-
-
         <b-list-group>
 
-            <b-list-group-item class="mt-1" v-for="category in categories" :key="category.id">
+            <b-list-group-item class="mt-1 category-item" v-for="category in categories" :key="category.id">
                 <b-row>
                     <b-col align="center" sm="8">
                         <b>{{ category.title }}</b>
                     </b-col>
                     <b-col align="right" sm="4">
-                        <b-button @click="showUpdateCategory(category)"> <b-icon icon="gear"></b-icon> </b-button>
-                        <b-button class="ml-2" @click="showDestroyCategory(category)"> <b-icon icon="trash"></b-icon> </b-button>
+                        <b-button @click="showModalUpdate()" ref="btnShowUpdate"> <b-icon icon="gear"></b-icon> </b-button> <!--edit-->
+                        <b-button class="ml-2" @click="showModalDelete(category)"  ref="btnShowDelete"> <b-icon icon="trash"></b-icon> </b-button>  <!--delete-->
                     </b-col>
 
                 </b-row>
 
             </b-list-group-item>
         </b-list-group>
+
+        <CategoryUpdate></CategoryUpdate>
+        <CategoryNew></CategoryNew>
 
     </b-container>
 </template>
@@ -52,59 +40,46 @@
 import { mapActions } from 'vuex'
 import { mapGetters } from 'vuex'
 
-import ModalCategory from "../Modal/ModalCategory";
+
+import CategoryUpdate from "../Modal/CategoryUpdate";
+import CategoryNew from "../Modal/CategoryNew";
 
 export default {
-    comments: {
-        ModalCategory
-    },
+    components: {CategoryNew, CategoryUpdate},
     data() {
         return {
             categoryName: {
-                title:'',
-                titleModal: ''
+                title: '',
+                categoryUpdate: null,
             }
         }
     },
     methods: {
-        ...mapActions(['loadCategories', 'addCategory']),
-        loadCategoriesLocal() {
-        this.loadCategories()
-        },
+        ...mapActions(['loadCategories', 'removeCategory']),
         onReset() {
             this.categoryName.title = ''
         },
-        showNewCategory() {
-            this.$refs['my-modal'].show()
+        showModalUpdate() {
+            this.$root.$emit('bv::show::modal', 'modal-update', '#btnShowUpdate')
         },
-        showUpdateCategory() {
-            this.$refs['my-modal'].show()
+        showModalNew() {
+            this.$root.$emit('bv::show::modal', 'modal-new', '#btnShowNew')
         },
-        showDestroyCategory() {
-
-        },
-        toggleModal() {
-            this.onReset()
-            this.$refs['my-modal'].hide();
-        },
-
-        //Actions Modal
-        newCategory(category) {
-            this.toggleModal("my-modal")
-            this.addCategory(category)
-            this.onReset()
-        },
-        updateCategory(category) {
-            this.toggleModal("my-modal")
-            this.addCategory(category)
-            this.onReset()
-        },
-        destroyCategory(category) {
-            this.toggleModal("my-modal")
-            this.addCategory(category)
-            this.onReset()
-        },
-
+        showModalDelete(category) {
+            this.boxOne = ''
+            this.$bvModal.msgBoxConfirm('Confirma Apagar Categoria?', {
+                okTitle: 'Sim',
+                cancelTitle: 'Cancelar',
+            })
+                .then(value => {
+                    if (value) {
+                        this.removeCategory(category.id)
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
 
     },
     computed: {
@@ -113,11 +88,17 @@ export default {
         })
     },
     mounted() {
-        this.loadCategoriesLocal();
-    }
+        this.loadCategories()
+    },
 }
 </script>
 
 <style>
+    .category-item {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        border-radius: 10px;
+    }
 
 </style>

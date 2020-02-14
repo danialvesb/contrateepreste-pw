@@ -4,8 +4,9 @@
   </div>
 </template>
 
-<script scope>
-import Menu from './Menu'
+<script>
+import Menu from '../Menu/Menu'
+
 export default {
   components: {
     Menu
