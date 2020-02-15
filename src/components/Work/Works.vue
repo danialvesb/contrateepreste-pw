@@ -1,17 +1,24 @@
 <template>
   <div>
     <Work v-for="work in works" :key="work.id" :work="work" ></Work>
+    <FilterWork></FilterWork>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+
+
+  import { mapGetters } from 'vuex'
 import { mapActions } from 'vuex'
+// import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import Work from './Work'
+import FilterWork from "../Filters/FilterWork";
 export default {
     components: {
-        Work
+        Work,
+        FilterWork
     },
     computed: {
         ...mapGetters({
@@ -37,7 +44,7 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    align-items: start;
+    justify-content: left;
   }
 </style>
