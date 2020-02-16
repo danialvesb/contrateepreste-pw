@@ -58,7 +58,7 @@ export default {
     align-items: start;
     justify-content: left;
     position: relative;
-    top: 80px;
+    top: 50px;
     width: 82%;
   }
 
@@ -67,7 +67,7 @@ export default {
     flex-direction: column;
     flex-wrap: wrap;
     position: absolute;
-    top: 90px;
+    top: 100px;
     right: 5px;
     width: 18%;
     height: 800px;

@@ -18,10 +18,6 @@ export default {
 
 <style>
     .content {
-        position: relative;
-        top: 80px;
-        width: 85%;
-        background: blue;
     }
 
 
