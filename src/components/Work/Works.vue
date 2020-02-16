@@ -13,8 +13,7 @@
 
 <script>
 
-
-  import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import { mapActions } from 'vuex'
 // import 'bootstrap/dist/css/bootstrap.css'
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -70,9 +69,10 @@ export default {
     top: 100px;
     right: 5px;
     width: 18%;
-    height: 800px;
+    height: 300px;
     background: rgb(36, 41, 46);
     border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
   }
 
 

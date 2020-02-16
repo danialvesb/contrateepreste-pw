@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <container>
+  <div class="container">
         <header class="header-card">
             <div class="category_title">
                 {{ work.category_title }}
@@ -25,9 +24,6 @@
                 <button class="btn-edit" href="#" @click="modalShow = !modalShow">Editar</button>
             </div>
         </footer>
-
-    </container>
-
 <!--    <b-modal v-model="modalShow" id="modal-1" title="Editar Serviço" hide-footer>-->
 <!--        <WorkCreate :formProps="work" class="modal-color"></WorkCreate>-->
 <!--    </b-modal>-->
@@ -45,6 +41,7 @@ import { mapActions } from 'vuex'
 
 
 export default {
+    name: 'work',
     components: {
         // 'b-modal': BModal,
         // WorkCreate,
@@ -74,7 +71,7 @@ export default {
 </script>
 
 <style scoped>
-    container {
+    .container {
         margin: 10px;
         background: rgb(63, 68, 72);
         display: flex;
