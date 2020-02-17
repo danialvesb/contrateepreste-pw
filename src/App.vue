@@ -1,21 +1,24 @@
 <template>
   <div id="app">
+
     <Header></Header>
-    <router-view></router-view>
+    <Main></Main>
+    <Footer></Footer>
+
   </div>
 </template>
 
 <script>
-  import 'bootstrap/dist/css/bootstrap.css'
-  import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-  import Header from  './components/Template/Header'
-  
-
+import Footer from "./components/Template/Footer";
+import Main from "./components/Template/Main";
+import Header from "./components/Template/Header";
 export default {
   name: 'app',
   components: {
+    Footer,
     Header,
+    Main
   },
 
 }
@@ -31,7 +34,7 @@ export default {
 
 }
 body {
-  background: linear-gradient(to left, #4286f4, #373B44);
+  background: rgb(241, 242, 247)
 }
 
 
