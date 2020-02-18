@@ -8,7 +8,7 @@
         <hr class="hr">
         <main class="main">
             <div class="input-title">
-                <input type="text" placeholder="Título">
+                <input type="text" placeholder="Título" v-model="search">
             </div>
             <hr>
             <div class="title">
@@ -16,14 +16,14 @@
             </div>
 
             <div class="input-category">
-                <select class="select">
-                    <option>Selecionar uma categoria</option>
-                    <option v-for="category in categories" :key="category.id">{{ category.name }}</option>
+                <select class="select" @change="selectionCategory($event.target.value)" >
+                    <option  autofocus>Selecionar uma categoria</option>
+                    <option v-for="( category ) in categories" :key="category.id">{{ category.name }}</option>
                 </select>
             </div>
         </main>
         <footer class="footer">
-            <button>Filtrar</button>
+            <button @click="emitFilters()">Filtrar</button>
         </footer>
 
     </div>
@@ -34,13 +34,32 @@
     import { mapActions } from 'vuex'
 
     export default {
+        data() {
+          return {
+              search: '',
+              categoryName: ''
+          }
+        },
         computed: {
             ...mapGetters({
-                categories: 'categoriesListSelectedOptions'
-            })
+                categories: 'categoriesListSelectedOptions',
+                works: 'worksList'
+            }),
         },
         methods: {
-            ...mapActions(['loadCategories'])
+            ...mapActions(['loadCategories']),
+            emitFilters() {
+                if (this.categoryName != 'Selecionar uma categoria') {
+                    this.$emit('filterData', {'title': this.search, 'category': this.categoryName})
+                }else {
+                    this.$emit('filterData', {'title': this.search, 'category': ''})
+                }
+
+                this.search = ''
+            },
+            selectionCategory(selectedName) {
+                this.categoryName = selectedName
+            }
         },
         mounted() {
             this.loadCategories()
@@ -48,6 +67,7 @@
 
     }
 </script>
+
 
 <style scoped>
 
@@ -62,6 +82,13 @@
         display: flex;
         flex-direction: column;
         min-height: 20%;
+        width: 100%;
+    }
+    .input-title {
+        width: 100%;
+    }
+    .input-category {
+        width: 100%;
     }
 
     .main {
@@ -72,6 +99,7 @@
     .footer {
         min-height: 15%;
         display: flex;
+        width: 100%;
         justify-content: center;
         flex-direction: column;
         align-items: center;
@@ -86,9 +114,12 @@
         border-radius: 5px;
         outline: none;
         cursor: pointer;
+        border: 0;
+        background: rgb(22, 32, 44);
+        color: white;
     }
     .footer button:hover{
-        background: rgb(22, 32, 44);
+        background: rgba(22, 32, 44, 0.52);
         color: white;
         border: 0px;
 
@@ -124,7 +155,8 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        width: 100%;
+        width: 90%;
         border-radius: 5px;
     }
+
 </style>

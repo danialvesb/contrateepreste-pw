@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <div class="works">
-      <Work v-for="work in works" :key="work.id" :work="work" ></Work>
+      <Work v-for="work in filterWorks" :key="work.id" :work="work" ></Work>
     </div>
 
     <div class="filter-works">
-      <FilterWork></FilterWork>
+      <FilterWork v-on:filterData="filtersData = $event"></FilterWork>
     </div>
 
   </div>
@@ -27,20 +27,35 @@ export default {
     },
     computed: {
         ...mapGetters({
-            works: 'worksList'
-        })   
+          works: 'worksList',
+        }),
+      filterWorks: function () {
+        return this.works.filter((item) => {
+          return item.title.match(this.filtersData.title)
+        })
+      },
+      filterWorksCategory: function () {
+        return this.works.filter((item) => {
+          return item.category_title.match(this.filtersData.category)
+        })
+
+      },
+
+    },
+    data() {
+      return {
+        filtersData: []
+      }
     },
     methods: {
       ...mapActions(['loadData']),
       loadDataLocal() {
         this.loadData()
-      }
+      },
     },
     mounted() {
       this.loadDataLocal()
     }
-
-    
 }
 </script>
 

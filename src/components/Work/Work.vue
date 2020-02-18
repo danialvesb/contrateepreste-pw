@@ -187,7 +187,7 @@ export default {
     }
 
     .btn-edit:hover,  .btn-delete:hover{
-        background-color: rgb(63, 68, 72);
+         background-color: rgb(63, 68, 72);
         color: white;
     }
     .btn-delete {
