@@ -8,9 +8,9 @@
               <li class="options">
                   <a class="options-text">Serviços</a>
                   <ul class="submenu">
-                      <li class="sub-options"> <a class="sub-options-text">Listar</a> </li>
+                      <li class="sub-options"> <a href="/servicos/listar" class="sub-options-text">Listar</a> </li>
                       <hr>
-                      <li class="sub-options"> <a class="sub-options-text">Cadastrar</a> </li>
+                          <li class="sub-options"> <a href="/servicos/cadastrar" class="sub-options-text">Cadastrar</a> </li>
                       <hr>
                       <li class="sub-options"> <a class="sub-options-text">Categorias</a> </li>
                   </ul>
@@ -40,7 +40,7 @@ export default {
     .navbar {
         display: flex;
         flex-direction: row;
-        height: 40px;
+        height: 50px;
         width: 100%;
     }
     .navbar .itens {
@@ -53,25 +53,19 @@ export default {
         width: 100%;
     }
     .navbar .itens .options {
-        padding-left: 20px;
+        border-right: 1px white solid;
+        padding-left: 50px;
         padding-right: 20px;
         cursor: pointer;
         height: 100%;
     }
 
-    .submenu li{
-        margin: 0;
-        display: none;
-        list-style: none;
 
-    }
-
-    li:hover > .submenu .sub-options {
+    .options:hover > .submenu .sub-options {
         display: flex;
         flex-direction: row;
         flex: 1;
         align-content: start;
-
     }
     .options:hover > .submenu{
         position: absolute;
@@ -79,29 +73,36 @@ export default {
         flex-direction: column;
     }
 
-    li > .submenu {
+    .options > .submenu {
         position: relative;
         display: none;
         flex-direction: column;
         top: 40px;
         height: 90px;
-        width: 100px;
+        width: 200px;
         background: rgb(36, 41, 46);
+        border-radius: 10px;
     }
 
     .options-text {
-
         position: relative;
         top: 10px;
+        font-size: 15px;
     }
 
     .sub-options {
         padding: 5px;
-
     }
     .sub-options:hover {
         padding: 5px;
         background: rgba(0, 0, 0, 0.17);
+        border: 0px;
+        border-radius: 10px;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
     }
 
 </style>

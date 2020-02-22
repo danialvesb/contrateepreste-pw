@@ -15,8 +15,6 @@
 
 import { mapGetters } from 'vuex'
 import { mapActions } from 'vuex'
-// import 'bootstrap/dist/css/bootstrap.css'
-// import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import Work from './Work'
 import FilterWork from "../Filters/FilterWork";
@@ -81,7 +79,7 @@ export default {
     flex-direction: column;
     flex-wrap: wrap;
     position: absolute;
-    top: 100px;
+    top: 110px;
     right: 5px;
     width: 18%;
     height: 300px;

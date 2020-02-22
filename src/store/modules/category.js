@@ -7,6 +7,7 @@ export default {
     mutations: {
         setCategories(state, data) {
             state.categories = data
+            state.categories.unshift({id: 0, title:"Selecione uma categoria para seu serviço"})
         },
 
         addCategory(state, data) {

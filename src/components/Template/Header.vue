@@ -29,7 +29,7 @@ import PageTitle from "../Header/PageTitle";
   }
   .orientation {
     position: relative;
-    top: 45px;
+    top: 52px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -37,7 +37,7 @@ import PageTitle from "../Header/PageTitle";
   }
   .page-title {
     position: relative;
-    top: 41px;
+    top: 51px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
