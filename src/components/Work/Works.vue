@@ -1,13 +1,18 @@
 <template>
   <b-container fluid class="m-0 p-0">
     <b-row cols="12"  class="m-0 p-0">
+
       <b-col class="m-2 p-0" md="8">
-        <b-row cols="3">
-          <Work v-for="work in filterWorks" :key="work.id" :work="work" ></Work>
-        </b-row>
+        <b-card-group deck class="m-0">
+            <b-row cols="1">
+                <Work v-for="work in filterWorks" :key="work.id" :work="work" ></Work>
+
+            </b-row>
+        </b-card-group>
+
       </b-col>
 
-      <b-col class="m-2 p-0" md="3" offset-md="4">
+      <b-col class="m-2 p-0" md="2">
         <FilterWork v-on:filterData="filtersData = $event"></FilterWork>
       </b-col>
     </b-row>
@@ -21,12 +26,15 @@
 import { mapGetters } from 'vuex'
 import { mapActions } from 'vuex'
 
+import { BCardGroup } from 'bootstrap-vue'
+
 import Work from './Work'
 import FilterWork from "../Filters/FilterWork";
 export default {
     components: {
-        Work,
-        FilterWork
+      Work,
+      FilterWork,
+      'b-card-group': BCardGroup
     },
     computed: {
         ...mapGetters({

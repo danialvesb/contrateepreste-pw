@@ -1,8 +1,8 @@
 <template>
-    <b-container>
+    <b-container class="filter">
         <b-row>
             <b-col md="12">
-                <div class="filter">
+                <div >
                     <header class="header">
                         <div class="title">
                             Filtros
@@ -11,7 +11,7 @@
                     <hr>
                     <main class="main">
                         <div class="input-title">
-                            <input type="text" placeholder="Título" v-model="search">
+                            <input type="text" class="input-title" placeholder="Título" v-model="search">
                         </div>
                         <hr>
                         <div class="title">
@@ -32,8 +32,6 @@
                 </div>
             </b-col>
         </b-row>
-
-
     </b-container>
 </template>
 
@@ -86,7 +84,12 @@
         color: white;
         padding: 5px;
         border-radius: 5px;
+        min-width: 400px;
     }
-
+    .input-title {
+        outline: none;
+        width: 100%;
+        border-radius: 5px;
+    }
 
 </style>
