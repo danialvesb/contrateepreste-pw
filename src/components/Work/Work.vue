@@ -1,41 +1,65 @@
 <template>
-  <div class="container">
-        <header class="header-card">
-            <div class="category_title">
-                {{ work.category_title }}
-            </div>
-            <div class="text-header-card">
-                {{ work.title }}
-            </div>
+  <b-container class="container">
+<!--      <b-row cols="12">-->
 
-        </header>
-        <hr>
-
-        <main class="content-card">
-<!--            <div class="text-content-card">-->
-<!--                {{ work.description }}-->
+<!--      </b-row>-->
+<!--        <header class="header-card">-->
+<!--            <div class="category_title">-->
+<!--                {{ work.category_title }}-->
 <!--            </div>-->
-            <div class="image-content-card" href="fff">
+<!--            <div class="text-header-card">-->
+<!--                {{ work.title }}-->
+<!--            </div>-->
 
-            </div>
-        </main>
-        <footer class="footer-card">
-            <div class="buttons-footer-card">
-                <button class="btn-edit" href="#" @click="modalShow = !modalShow">Editar</button>
-            </div>
-        </footer>
-<!--    <b-modal v-model="modalShow" id="modal-1" title="Editar Serviço" hide-footer>-->
-<!--        <WorkCreate :formProps="work" class="modal-color"></WorkCreate>-->
-<!--    </b-modal>-->
+<!--        </header>-->
+<!--        <hr>-->
 
-  </div>
+<!--        <main class="content-card">-->
+<!--&lt;!&ndash;            <div class="text-content-card">&ndash;&gt;-->
+<!--&lt;!&ndash;                {{ work.description }}&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--            <div class="image-content-card" href="fff">-->
+
+<!--            </div>-->
+<!--        </main>-->
+<!--        <footer class="footer-card">-->
+<!--            <div class="buttons-footer-card">-->
+<!--                <button class="btn-edit" href="#" @click="modalShow = !modalShow">Editar</button>-->
+<!--            </div>-->
+<!--        </footer>-->
+<!--&lt;!&ndash;    <b-modal v-model="modalShow" id="modal-1" title="Editar Serviço" hide-footer>&ndash;&gt;-->
+<!--&lt;!&ndash;        <WorkCreate :formProps="work" class="modal-color"></WorkCreate>&ndash;&gt;-->
+<!--&lt;!&ndash;    </b-modal>&ndash;&gt;-->
+      <b-card no-body class="overflow-hidden m-1" style="max-width: 500px; min-width: 300px; max-height: 200px; min-height: 200px">
+          <b-row no-gutters cols="12">
+              <b-col md="6">
+                  <b-card-img src="https://picsum.photos/400/400/?image=20" class="rounded-0"></b-card-img>
+              </b-col>
+              <b-col md="6">
+                  <b-card-header class="p-1 ">
+                      <div class="category-header">
+                          {{ work.category_title }}
+                      </div>
+                      <div>
+                          {{ work.title }}
+                      </div>
+                  </b-card-header>
+                  <b-card-body  style="font-size: 15px;">
+                      <b-card-text>
+                          {{ work.description }}
+                      </b-card-text>
+                  </b-card-body>
+              </b-col>
+          </b-row>
+      </b-card>
+  </b-container>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
 
 // import WorkCreate from "../Form/WorkCreate";
-// import { BModal, BButton, BCard } from 'bootstrap-vue'
+import { BCard, BCardBody, BCardText, BCardHeader } from 'bootstrap-vue'
 
 
 
@@ -43,7 +67,10 @@ import { mapActions } from 'vuex'
 export default {
     name: 'work',
     components: {
-        // 'b-modal': BModal,
+        'b-card': BCard,
+        'b-card-text': BCardText,
+        'b-card-body': BCardBody,
+        'b-card-header': BCardHeader
         // WorkCreate,
     },
     props: {
@@ -71,136 +98,11 @@ export default {
 </script>
 
 <style scoped>
-    .container {
-        margin: 10px;
-        background: rgb(63, 68, 72);
-        display: flex;
-        flex-direction: column;
-        width: 255px;
-        height: 350px;
-        border-radius: 10px;
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
-
-
-    }
-
-    .header-card {
-        max-height: 15%;
-        display: flex;
-        flex-flow: column;
-        font-size: 14px;
-
-    }
-
-    .id-header-card {
-        display: flex;
-        flex-direction: row;
-        border-radius: 10px;
-        color: white;
-        margin: 3px;
-        align-self: flex-end;
-    }
-
-    .category_title {
-        display: flex;
-        flex-direction: row;
-        border-radius: 10px;
-        color: white;
-        margin: 3px;
-        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
-        background: rgb(36, 41, 46);
-        padding: 2px;
-        cursor: pointer;
-        outline: none;
-        flex: 1;
-    }
-
-    .text-header-card {
-        display: flex;
-        flex-direction: row;
-        margin: 3px;
-        color: white;
-        padding: 2px;
-        flex: 1;
-
-
-
-
-    }
-
-    .content-card {
-        font-size: 13px;
-        min-height: 60%;
-        display: flex;
-        flex-direction: column;
-
-    }
-
-    .text-content-card {
-        min-height: 30%;
-        color: white;
-        padding: 10px;
-        flex: 1;
-    }
-
-    .image-content-card {
-        min-height: 100%;
-        width: 98%;
-        margin-top: 10px;
-        display: flex;
-        flex-direction: column;
-        background: gray;
-        background-image: url("https://s3.amazonaws.com/mapa-da-obra-producao/wp-content/uploads/2018/08/materiais-para-pintura.jpg");
-        border-radius: 10px;
-        align-self: center;
-        cursor: pointer;
-    }
-
-    .footer-card {
-        min-height: 10%;
-        max-height: 10%;
-        display: flex;
-        width: 100%;
-        flex-direction: column;
-        justify-content: center;
-        align-self: center;
-        margin-top: 30px;
-
-    }
-
-    .buttons-footer-card {
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        background: rgba(128, 128, 128, 0.58);
-    }
-    .buttons-footer-card button {
-        padding: 5px;
-        margin: 6px;
+    .category-header {
         border-radius: 5px;
-        text-decoration: none;
-        font-size: 15px;
-        border: none;
+        background: rgb(52, 58, 64);
         color: white;
-        outline: none;
-        cursor: pointer;
-    }
-
-    .btn-edit:hover,  .btn-delete:hover{
-         background-color: rgb(63, 68, 72);
-        color: white;
-    }
-    .btn-delete {
-        background: rgb(235, 83, 82);
-    }
-
-    .btn-edit {
-        background: rgb(22, 32, 44);
-    }
-
-    .btn-offer {
-        background: gray;
-        cursor: unset;
+        text-align: center;
     }
 
 </style>

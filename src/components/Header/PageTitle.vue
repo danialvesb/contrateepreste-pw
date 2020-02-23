@@ -1,18 +1,26 @@
 <template>
-    <div class="container">
-        Título
-    </div>
+    <b-container class="container" fluid>
+        <b-row cols="12" md="12">
+            <b-col>
+                Título
+            </b-col>
+        </b-row>
+    </b-container>
 </template>
 
 <script>
+    import {BContainer, BRow, BCol } from 'bootstrap-vue'
     export default {
+        components: {
+            'b-container': BContainer,
+            'b-row': BRow,
+            'b-col': BCol
+        }
     }
 </script>
 
 <style scoped>
     .container {
-        display: flex;
-        flex-direction: row;
         background: rgba(63, 68, 72, 0.36);
         color: white;
         height: 20px;

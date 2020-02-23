@@ -78,7 +78,7 @@
 
     </div>
     <div class="footer">
-        <button>Salvar</button>
+        <b-button>Salvar</b-button>
     </div>
 
 </div>
@@ -88,9 +88,7 @@
 <script>
 import { mapActions } from 'vuex'
 import { mapGetters } from 'vuex'
-import { BFormInput } from 'bootstrap-vue'
-import { BFormTextarea } from 'bootstrap-vue'
-import { BFormSelect } from 'bootstrap-vue'
+import { BFormInput, BFormTextarea, BFormSelect, BButton } from 'bootstrap-vue'
 
 
 export default {
@@ -102,7 +100,8 @@ export default {
     components: {
         'b-form-input': BFormInput,
         'b-form-textarea': BFormTextarea,
-        'b-form-select': BFormSelect
+        'b-form-select': BFormSelect,
+        'b-button': BButton
     },
     data() {
         return {

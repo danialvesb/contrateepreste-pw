@@ -36,11 +36,14 @@
 <!--            </b-col>-->
 <!--        </b-row>-->
         <b-row>
-            <b-col>1 of 3</b-col>
+            <b-col >1 of 3</b-col>
             <b-col>2 of 3</b-col>
             <b-col>3 of 3</b-col>
         </b-row>
+
     </b-container>
+
+
 </template>
 
 <script>
@@ -55,6 +58,9 @@
             'b-container': BContainer,
             'b-row': BRow,
             'b-col': BCol
+        },
+        directives: {
+
         }
     }
 </script>

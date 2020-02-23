@@ -1,31 +1,43 @@
 <template>
-  <div>
-    <Menu class="menu"></Menu>
-    <PageTitle class="page-title"></PageTitle>
-    <Orientation class="orientation"></Orientation>
-  </div>
+  <b-container fluid class="menu m-0 p-0">
+    <b-row cols-md="12" class="m-0 p-0">
+
+      <b-col class="m-0 p-0">
+        <Menu class="menu" ></Menu>
+      </b-col>
+    </b-row>
+
+<!--        <PageTitle class="page-title"></PageTitle>-->
+<!--        <Orientation class="orientation"></Orientation>-->
+
+  </b-container>
 </template>
 
 <script>
 import Menu from "../Header/Menu";
-import Orientation from "../Header/Orientation";
-import PageTitle from "../Header/PageTitle";
+// import Orientation from "../Header/Orientation";
+// import PageTitle from "../Header/PageTitle";
+
   export default {
   components: {
     Menu,
-    Orientation,
-    PageTitle
+    // Orientation,
+    // PageTitle,
+
   }
 }
 </script>
 
-<style>
+<style scoped>
+  .span {
+    background: blue;
+  }
   .menu {
-    position:fixed;
-    left:0px;
-    top: 0px;
-    width: 100%;
-    z-index: 9999;
+    /*position:fixed;*/
+    /*left:0px;*/
+    /*top: 0px;*/
+    /*z-index: 9999;*/
+    /*padding: 0px;*/
   }
   .orientation {
     position: relative;

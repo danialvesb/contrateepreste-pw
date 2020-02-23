@@ -1,14 +1,19 @@
 <template>
-  <div class="container">
-    <div class="works">
-      <Work v-for="work in filterWorks" :key="work.id" :work="work" ></Work>
-    </div>
+  <b-container fluid class="m-0 p-0">
+    <b-row cols="12"  class="m-0 p-0">
+      <b-col class="m-2 p-0" md="8">
+        <b-row cols="3">
+          <Work v-for="work in filterWorks" :key="work.id" :work="work" ></Work>
+        </b-row>
+      </b-col>
 
-    <div class="filter-works">
-      <FilterWork v-on:filterData="filtersData = $event"></FilterWork>
-    </div>
+      <b-col class="m-2 p-0" md="3" offset-md="4">
+        <FilterWork v-on:filterData="filtersData = $event"></FilterWork>
+      </b-col>
+    </b-row>
 
-  </div>
+
+  </b-container>
 </template>
 
 <script>
@@ -58,35 +63,6 @@ export default {
 </script>
 
 <style scoped>
-  .container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-  .works {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: start;
-    justify-content: left;
-    position: relative;
-    top: 50px;
-    width: 82%;
-  }
-
-  .filter-works {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    position: absolute;
-    top: 110px;
-    right: 5px;
-    width: 18%;
-    height: 300px;
-    background: rgb(36, 41, 46);
-    border-radius: 5px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
-  }
 
 
 </style>
