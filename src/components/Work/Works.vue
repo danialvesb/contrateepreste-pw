@@ -1,18 +1,16 @@
 <template>
   <b-container fluid class="m-0 p-0">
-    <b-row cols="12"  class="m-0 p-0">
+    <b-row cols="12" class="m-0 p-0">
 
-      <b-col class="m-2 p-0" md="8">
+      <b-col class="m-1 p-0"  md="8">
         <b-card-group deck class="m-0">
-            <b-row cols="1">
+            <b-row cols="3">
                 <Work v-for="work in filterWorks" :key="work.id" :work="work" ></Work>
-
             </b-row>
         </b-card-group>
 
       </b-col>
-
-      <b-col class="m-2 p-0" md="2">
+      <b-col class="m-1 mt-3 ml-2 p-0" md="2">
         <FilterWork v-on:filterData="filtersData = $event"></FilterWork>
       </b-col>
     </b-row>
