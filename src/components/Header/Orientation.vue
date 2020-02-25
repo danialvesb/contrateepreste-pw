@@ -1,7 +1,7 @@
 <template>
-    <b-container class="container" fluid>
-        <b-row cols="12" md="12">
-            <b-col>
+    <b-container class="m-0 p-0" fluid >
+        <b-row cols="12" >
+            <b-col  md="12" style="background: rgba(128,128,128,0.33)">
                 Orientação
             </b-col>
         </b-row>
@@ -20,11 +20,5 @@
 </script>
 
 <style scoped>
-    .container {
-        background: rgba(63, 68, 72, 0.36);
-        color: white;
-        height: 30px;
-        background: blue;
-    }
 
 </style>

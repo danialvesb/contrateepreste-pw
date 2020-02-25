@@ -1,7 +1,7 @@
 <template>
-    <b-container class="container" fluid>
-        <b-row cols="12" md="12">
-            <b-col>
+    <b-container fluid class="m-0 p-0">
+        <b-row class="m-0 p-0">
+            <b-col md="12" style="background: gray">
                 Título
             </b-col>
         </b-row>
@@ -9,20 +9,13 @@
 </template>
 
 <script>
-    import {BContainer, BRow, BCol } from 'bootstrap-vue'
+
     export default {
         components: {
-            'b-container': BContainer,
-            'b-row': BRow,
-            'b-col': BCol
         }
     }
 </script>
 
 <style scoped>
-    .container {
-        background: rgba(63, 68, 72, 0.36);
-        color: white;
-        height: 20px;
-    }
+
 </style>

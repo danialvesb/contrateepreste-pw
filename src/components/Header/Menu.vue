@@ -4,12 +4,12 @@
           <b-col class="m-0 p-0">
               <b-navbar type="dark" variant="dark">
                   <b-navbar-nav >
-                      <b-nav-item href="#">Início</b-nav-item>
+                      <b-nav-item href="/inicio">Início</b-nav-item>
 
                       <b-nav-item-dropdown text="Serviços">
                           <b-dropdown-item href="/servicos/listar">Listar</b-dropdown-item>
                           <b-dropdown-item href="/servicos/cadastrar">Cadastrar</b-dropdown-item>
-                          <b-dropdown-item href="#">Categorias</b-dropdown-item>
+                          <b-dropdown-item href="/servicos/categorias">Categorias</b-dropdown-item>
                       </b-nav-item-dropdown>
 
                       <b-nav-item-dropdown text="Usuário" class="navbar-item">

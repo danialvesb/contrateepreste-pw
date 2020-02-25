@@ -1,53 +1,53 @@
 <template>
-    <b-container class="filter">
-        <b-row>
-            <b-col md="12">
-                <div >
-                    <header class="header">
-                        <div class="title">
-                            Filtros
-                        </div>
-                    </header>
-                    <hr>
-                    <main class="main">
-                        <div class="input-title">
-                            <input type="text" class="input-title" placeholder="Título" v-model="search">
-                        </div>
-                        <hr>
-                        <div class="title">
-                            Categoria
-                        </div>
-
-                        <div class="input-category">
-                            <select class="select" @change="selectionCategory($event.target.value)" >
-                                <option  autofocus>Selecionar uma categoria</option>
-                                <option v-for="( category ) in categories" :key="category.id">{{ category.name }}</option>
-                            </select>
-                        </div>
-                    </main>
-                    <footer class="footer">
-                        <button @click="emitFilters()">Filtrar</button>
-                    </footer>
+    <div>
+        <b-card class="mb-2 mt-0 box-shadow" style="max-width: 540px; min-width: 400px">
+            <b-card-header header-bg-variant="dark" header-text-variant="white">
+                <h3>Filtros</h3>
+            </b-card-header>
+            <b-card-body class="card-body">
+                <div class="input-title">
+                    <b-form-input  placeholder="Título" v-model="search"></b-form-input>
+                </div>
+                <hr>
+                <b-form-select v-model="selected" :options="categories" @change="selectionCategory($event.target.value)" >
+                </b-form-select>
+                <div class="d-flex justify-content-between align-items-center">
 
                 </div>
-            </b-col>
-        </b-row>
-    </b-container>
+            </b-card-body>
+            <b-card-footer footer-bg-variant="dark">
+                <div class="btn-group">
+                    <b-button @click="emitFilters()">Filtrar</b-button>
+                </div>
+
+            </b-card-footer>
+        </b-card>
+
+    </div>
 </template>
 
 <script>
     import { mapGetters } from 'vuex'
     import { mapActions } from 'vuex'
-
+    import { BCard, BButton, BCardBody, BCardFooter, BCardHeader, BFormInput, BFormSelect} from 'bootstrap-vue'
 
     export default {
         data() {
           return {
               search: '',
-              categoryName: ''
+              categoryName: '',
+              selected: ''
           }
         },
         components: {
+            'b-card': BCard,
+            'b-button': BButton,
+            'b-card-body': BCardBody,
+            'b-card-footer': BCardFooter,
+            'b-card-header': BCardHeader,
+            'b-form-input': BFormInput,
+            'b-form-select': BFormSelect
+
         },
         computed: {
             ...mapGetters({
@@ -79,17 +79,5 @@
 
 
 <style scoped>
-    .filter {
-        background-color: rgb(52, 58, 64);
-        color: white;
-        padding: 5px;
-        border-radius: 5px;
-        min-width: 400px;
-    }
-    .input-title {
-        outline: none;
-        width: 100%;
-        border-radius: 5px;
-    }
 
 </style>

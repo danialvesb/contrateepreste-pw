@@ -2,7 +2,7 @@
   <b-container id="app" fluid class="m-0 p-0">
 
     <b-row cols="12"  class="m-0 p-0">
-      <b-col class="m-0 p-0">
+      <b-col class="m-0 p-0" md="12">
         <Header class="header"></Header>
         <Main></Main>
         <!--        <Footer></Footer>-->

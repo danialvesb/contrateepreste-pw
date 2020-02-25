@@ -16,7 +16,8 @@ export default new VueRouter({
         { path: '/inicio', component: Home},
         { path: '/servicos/listar', component: Works},
         { path: '/servicos/cadastrar', component: WorkCreate},
-        { path: '/servicos/visualizar', component: ViewWorks},
+        { path: '/servicos/editar/:id', component: WorkCreate},
+        { path: '/servicos/visualizar/:id', component: ViewWorks},
 
         { path: '/servicos/categorias', component: Category }
     ]

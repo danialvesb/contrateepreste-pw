@@ -1,37 +1,29 @@
 <template>
-    <b-container>
-        <b-navbar toggleable="sm" type="light" variant="light">
-        <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
+    <b-container fluid>
+        <b-row class="justify-content-md-left mt-2  p-0" >
 
-        <b-navbar-brand>Categorias de Serviços</b-navbar-brand>
+            <b-col md="4" >
+                <b-button>Cadastrar Categoria</b-button>
+            </b-col>
+        </b-row>
+        <b-row class="justify-content-md-center m-3">
 
-        <b-collapse id="nav-text-collapse" is-nav>
-            <b-navbar-nav>
-                <b-button align="right" @click="showModalNew()" ref="btnShowNew">Nova</b-button>
-            </b-navbar-nav>
-        </b-collapse>
-
-        </b-navbar>
-
-        <b-list-group>
-
-            <b-list-group-item class="mt-1 category-item" v-for="category in categories" :key="category.id">
-                <b-row>
-                    <b-col align="center" sm="8">
-                        <b>{{ category.title }}</b>
-                    </b-col>
-                    <b-col align="right" sm="4">
-                        <b-button @click="showModalUpdate()" ref="btnShowUpdate"> <b-icon icon="gear"></b-icon> </b-button> <!--edit-->
-                        <b-button class="ml-2" @click="showModalDelete(category)"  ref="btnShowDelete"> <b-icon icon="trash"></b-icon> </b-button>  <!--delete-->
-                    </b-col>
-
-                </b-row>
-
-            </b-list-group-item>
-        </b-list-group>
-
-        <CategoryUpdate></CategoryUpdate>
-        <CategoryNew></CategoryNew>
+            <b-col md="4" >
+                <strong>Categorias</strong>
+                <b-table striped hover :items="categories" :fields="fields" head-variant="dark" style="min-width: 500px">
+                    <template v-slot:cell(Editar)="row">
+                        <b-button size="sm" @click="row.toggleDetails" class="mr-2">
+                            Editar
+                        </b-button>
+                    </template>
+                    <template v-slot:cell(Excluir)="row">
+                        <b-button size="sm" @click="row.toggleDetails" class="mr-2">
+                            Excluir
+                        </b-button>
+                    </template>
+                </b-table>
+            </b-col>
+        </b-row>
 
     </b-container>
 </template>
@@ -41,17 +33,25 @@ import { mapActions } from 'vuex'
 import { mapGetters } from 'vuex'
 
 
-import CategoryUpdate from "../Modal/CategoryUpdate";
-import CategoryNew from "../Modal/CategoryNew";
+// import CategoryUpdate from "../Modal/CategoryUpdate";
+// import CategoryNew from "../Modal/CategoryNew";
+
+import { BTable, BButton } from 'bootstrap-vue'
 
 export default {
-    components: {CategoryNew, CategoryUpdate},
+    components: {
+        // CategoryNew,
+        // CategoryUpdate,
+        'b-table': BTable,
+        'b-button': BButton
+    },
     data() {
         return {
             categoryName: {
                 title: '',
                 categoryUpdate: null,
-            }
+            },
+            fields: [{id: 'Código'}, { title:'Título'}, 'Editar', 'Excluir'],
         }
     },
     methods: {

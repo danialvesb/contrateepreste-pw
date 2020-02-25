@@ -10,7 +10,7 @@
         </b-card-group>
 
       </b-col>
-      <b-col class="m-1 mt-3 ml-2 p-0" md="2">
+      <b-col class="m-1 mt-3 ml-4 p-0" md="2">
         <FilterWork v-on:filterData="filtersData = $event"></FilterWork>
       </b-col>
     </b-row>

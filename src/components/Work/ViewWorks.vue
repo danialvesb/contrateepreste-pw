@@ -1,63 +1,60 @@
 <template>
-    <b-container class="container">
-<!--        <b-row>-->
-<!--            <b-col class="col1">-->
-<!--                <b-card>-->
-<!--                    <b-media>-->
-<!--                        <template v-slot:aside>-->
-<!--                            <b-img blank blank-color="#ccc" width="64" alt="placeholder"></b-img>-->
-<!--                        </template>-->
-<!--                        <h5 class="mt-0">Media Title</h5>-->
-<!--                        <p>-->
-<!--                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.-->
-<!--                            Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc-->
-<!--                            ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.-->
-<!--                        </p>-->
-<!--                        <p>-->
-<!--                            Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque-->
-<!--                            penatibus et magnis dis parturient montes, nascetur ridiculus mus.-->
-<!--                        </p>-->
-<!--                        <b-media>-->
-<!--                            <template v-slot:aside>-->
-<!--                                <b-img blank blank-color="#ccc" width="64" alt="placeholder"></b-img>-->
-<!--                            </template>-->
+    <b-container fluid>
+        <b-row class="m-2">
+            <b-col md="2">
+                    <b-card>
+                        <b-card-header class="p-0">
 
-<!--                            <h5 class="mt-0">Nested Media</h5>-->
-<!--                            <p class="mb-0">-->
-<!--                                Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in-->
-<!--                                faucibus.-->
-<!--                            </p>-->
-<!--                        </b-media>-->
-<!--                    </b-media>-->
-<!--                </b-card>-->
-<!--            </b-col>-->
-<!--            <b-col>-->
-<!--                teste-->
-<!--            </b-col>-->
-<!--        </b-row>-->
-        <b-row>
-            <b-col >1 of 3</b-col>
-            <b-col>2 of 3</b-col>
-            <b-col>3 of 3</b-col>
+                        </b-card-header>
+
+                        <b-card-body body-bg-variant="dark" class="p-1">
+                            <b-card-img src="https://picsum.photos/600/300/?image=25"></b-card-img>
+                        </b-card-body>
+
+                        <b-card-footer class="p-0">
+                        </b-card-footer>
+
+                    </b-card>
+            </b-col>
+            <b-col md="8" style="background: rgb(52, 58, 64); color: white">
+                Título
+                <hr>
+                Descrição
+                <hr>
+                Categorias
+                <hr>
+                Data de cadastro
+                <hr>
+
+
+
+
+
+            </b-col>
         </b-row>
-
+        <b-row class="mt-2; ml-0;p-0">
+            <b-col md="12" style="background: rgb(52, 58, 64); padding: 5px;" align="center" >
+                <b-button-group>
+                    <b-button variant="light">Editar</b-button>
+                    <b-button variant="light">Visualizar ofertas desse serviço</b-button>
+                </b-button-group>
+            </b-col>
+        </b-row>
     </b-container>
-
 
 </template>
 
 <script>
-    // import { BMedia, BCard, BImg, BContainer, BRow, BCol } from 'bootstrap-vue'
-    import {BContainer, BRow, BCol } from 'bootstrap-vue'
+    import { BCardBody, BCardFooter, BCardHeader, BCardImg, BButton, BButtonGroup } from 'bootstrap-vue'
 
     export default {
         components: {
-            // 'b-media': BMedia,
-            // 'b-card': BCard,
-            // 'b-img': BImg,
-            'b-container': BContainer,
-            'b-row': BRow,
-            'b-col': BCol
+            'b-card-header': BCardHeader,
+            'b-card-body': BCardBody,
+            'b-card-footer': BCardFooter,
+            'b-card-img': BCardImg,
+            'b-button': BButton,
+            'b-button-group': BButtonGroup
         },
         directives: {
 
@@ -66,8 +63,5 @@
 </script>
 
 <style scoped>
-    .container {
-        position: relative;
-        top: 60px;
-    }
+
 </style>
